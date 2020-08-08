@@ -112,9 +112,6 @@ export default {
     };
   },
   methods: {
-    showAlert() {
-      window.alert('Hi');
-    },
   },
 };
 </script>
