@@ -4,10 +4,11 @@
     <q-item clickable v-ripple @click="$root.$emit('toggleSideBar')">
       <q-item-section></q-item-section>
       <q-item-section avatar>
-        <q-icon color="primary" :name="leftActive ? 'chevron_left' : 'chevron_right'" />
+        <q-icon color="primary" :name="$q.platform.is.mobile ? 'chevron_left' : (leftActive ? 'chevron_left' : 'chevron_right')" />
       </q-item-section>
     </q-item>
     <q-expansion-item
+      default-opened
       icon="people_outline"
       label="Online">
       <q-list>
@@ -32,7 +33,7 @@
       </q-item-section>
     </q-item>
     <q-separator />
-    <template v-if="leftActive">
+    <template v-if="leftOpen">
     <q-item v-for="channel in videoChannels" :key="channel.id" clickable v-ripple>
       <q-item-section avatar>
         <q-btn dense flat icon="play_arrow" />
@@ -53,9 +54,19 @@ export default {
       this.leftActive = bool;
     });
   },
+  computed: {
+    leftOpen: {
+      get() {
+        return this.$q.platform.is.mobile ? true : this.leftActive;
+      },
+      set(open) {
+        this.leftActive = open;
+      },
+    },
+  },
   data() {
     return {
-      leftActive: true,
+      leftActive: this.$q.platform.is.desktop,
       onlineUsers: [
         {
           id: 1,

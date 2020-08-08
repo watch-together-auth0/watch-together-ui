@@ -7,7 +7,7 @@
           src="logo.png"
           style="width: 50px;"
           class="cursor-pointer"
-          @click="$router.push('/')"
+          @click="$router.push({ name: 'index' })"
         />
         <!-- <q-btn
           flat
@@ -102,7 +102,7 @@ export default {
   },
   data() {
     return {
-      leftActive: true,
+      leftActive: this.$q.platform.is.desktop,
       footerLinks: [
         'Site map',
         'Privacy',
