@@ -9,7 +9,7 @@
           class="cursor-pointer"
           @click="$router.push('/')"
         />
-        <q-btn
+        <!-- <q-btn
           flat
           stretch
           class="q-px-md text-weight-bold"
@@ -23,14 +23,14 @@
           class="q-px-md text-weight-bold"
           no-caps
           label="Help"
-        />
+        /> -->
         <q-space />
         <q-btn
           unelevated
           color="purple"
           class="q-px-md text-weight-bold"
           no-caps
-          label="Register"
+          label="Sign In"
           to="/home"
         />
       </q-toolbar>
@@ -56,7 +56,7 @@
       <router-view />
     </q-page-container>
 
-    <q-footer class="bg-grey-8 text-white">
+    <!-- <q-footer class="bg-grey-8 text-white">
       <q-toolbar class="align-center">
         <template v-for="(link, index) in footerLinks">
           <q-btn
@@ -69,7 +69,7 @@
           />
         </template>
       </q-toolbar>
-    </q-footer>
+    </q-footer> -->
 
   </q-layout>
 </template>
@@ -85,7 +85,7 @@ export default {
     this.$root.$on('toggleSideBar', () => {
       this.leftActive = !this.leftActive;
       this.$root.$emit('leftActiveChanged', this.leftActive);
-    })
+    });
   },
   computed: {
     leftMini() {
