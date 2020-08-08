@@ -62,13 +62,6 @@
 </template>
 
 <script>
-<<<<<<< HEAD
-
-export default {
-  name: 'MainLayout',
-  data() {
-    return {
-=======
 export default {
   data() {
     return {
@@ -79,7 +72,6 @@ export default {
         'Terms',
         'Join Us',
       ],
->>>>>>> 7d5b07810be41959444144cb29d8b17fecc7cbea
     };
   },
   methods: {
