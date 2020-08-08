@@ -7,7 +7,7 @@
           src="logo.png"
           style="width: 50px;"
           class="cursor-pointer"
-          @click="leftDrawerOpen = !leftDrawerOpen"
+          @click="$router.push('/')"
         />
         <q-btn
           flat
@@ -31,12 +31,25 @@
           class="q-px-md text-weight-bold"
           no-caps
           label="Register"
+          to="/home"
         />
       </q-toolbar>
     </q-header>
 
-    <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered>
+    <q-drawer
+      v-if="$route.name !== 'index'"
+      show-if-above
+      v-model="leftOpen"
+      side="left"
+      bordered
+      :mini="leftMini"
+      :width="250"
+      :breakpoint="500"
+      >
       <!-- drawer content -->
+      <Sidebar
+        class="q-mt-md"
+      />
     </q-drawer>
 
     <q-page-container>
@@ -62,10 +75,34 @@
 </template>
 
 <script>
+import Sidebar from 'components/Sidebar.vue';
+
 export default {
+  components: {
+    Sidebar,
+  },
+  mounted() {
+    this.$root.$on('toggleSideBar', () => {
+      this.leftActive = !this.leftActive;
+      this.$root.$emit('leftActiveChanged', this.leftActive);
+    })
+  },
+  computed: {
+    leftMini() {
+      return !this.leftActive;
+    },
+    leftOpen: {
+      get() {
+        return this.$q.platform.is.mobile ? this.leftActive : true;
+      },
+      set(open) {
+        this.leftActive = open;
+      },
+    },
+  },
   data() {
     return {
-      leftDrawerOpen: false,
+      leftActive: true,
       footerLinks: [
         'Site map',
         'Privacy',
