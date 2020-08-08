@@ -30,7 +30,7 @@
           color="purple"
           class="q-px-md text-weight-bold"
           no-caps
-          label="Register"
+          label="Sign In"
           to="/home"
         />
       </q-toolbar>
