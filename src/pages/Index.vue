@@ -16,16 +16,16 @@
             </div>
       </div>
    </div>
+</div>
    <div class="row">
      <div class="col">
-        <q-img src="family.jpg" style="max-height: 500px">
+        <q-img src="family.jpg">
           <div class="absolute-full text-heading flex flex-center ">
             <h3 class = "text-purple-wt text-weight-bold">Enjoy YouTube, Vimeo videos and more with your family</h3>
           </div>
         </q-img>
       </div>
    </div>
-</div>
  </div>
 </template>
 
