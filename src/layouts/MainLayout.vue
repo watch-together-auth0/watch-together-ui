@@ -56,7 +56,7 @@
       <router-view />
     </q-page-container>
 
-    <q-footer class="bg-grey-8 text-white">
+    <!-- <q-footer class="bg-grey-8 text-white">
       <q-toolbar class="align-center">
         <template v-for="(link, index) in footerLinks">
           <q-btn
@@ -69,7 +69,7 @@
           />
         </template>
       </q-toolbar>
-    </q-footer>
+    </q-footer> -->
 
   </q-layout>
 </template>
