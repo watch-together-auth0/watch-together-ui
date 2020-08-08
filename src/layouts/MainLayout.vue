@@ -9,7 +9,7 @@
           class="cursor-pointer"
           @click="$router.push('/')"
         />
-        <q-btn
+        <!-- <q-btn
           flat
           stretch
           class="q-px-md text-weight-bold"
@@ -23,7 +23,7 @@
           class="q-px-md text-weight-bold"
           no-caps
           label="Help"
-        />
+        /> -->
         <q-space />
         <q-btn
           unelevated
