@@ -9,10 +9,7 @@
         <h5 class = "text-purple-wt text-weight-bold top-margin" >Popular Videos</h5>
          <div class="q-pa-md">
             <div class="row">
-              <div class="col">  <q-video class="q-pa-sm"src="https://www.youtube.com/embed/k3_tw44QsZQ?rel=0" /></div>
-              <div class="col">  <q-video class="q-pa-sm"src="https://www.youtube.com/embed/k3_tw44QsZQ?rel=0" /></div>
-              <div class="col">  <q-video class="q-pa-sm"src="https://www.youtube.com/embed/k3_tw44QsZQ?rel=0" /></div>
-              <div class="col">  <q-video class="q-pa-sm"src="https://www.youtube.com/embed/k3_tw44QsZQ?rel=0" /></div>
+              <div v-for="(video, index) in popularVideos" v-bind:key="index" class="col">  <q-video class="q-pa-sm" v-bind:src="video" /></div>
             </div>
       </div>
    </div>
@@ -32,5 +29,15 @@
 <script>
 export default {
   name: 'PageIndex',
+  data() {
+    return {
+      popularVideos: [
+        'https://www.youtube.com/embed/k3_tw44QsZQ?rel=0',
+        'https://www.youtube.com/embed/k3_tw44QsZQ?rel=0',
+        'https://www.youtube.com/embed/k3_tw44QsZQ?rel=0',
+        'https://www.youtube.com/embed/k3_tw44QsZQ?rel=0',
+      ],
+    };
+  },
 };
 </script>
