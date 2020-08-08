@@ -1,42 +1,52 @@
 <template>
- <div class="col">
-  <div class="row" >
-   <div class="col col-md-2">
-        <q-img src="logo.png" style="max-width: 250px">
-        </q-img>
-      </div>
+  <q-page class="">
+    <div class="row">
       <div class="col">
-        <h5 class = "text-purple-wt text-weight-bold top-margin" >Popular Videos</h5>
-         <div class="q-pa-md">
-            <div class="row">
-              <div v-for="(video, index) in popularVideos" v-bind:key="index" class="col">  <q-video class="q-pa-sm" v-bind:src="video" /></div>
-            </div>
-      </div>
-   </div>
-</div>
-   <div class="row">
-     <div class="col">
-        <q-img src="family.jpg">
-          <div class="absolute-full text-heading flex flex-center ">
-            <h3 class = "text-purple-wt text-weight-bold">Enjoy YouTube, Vimeo videos and more with your family</h3>
-          </div>
+        <q-img basic src="landing-cover-photo.png">
         </q-img>
       </div>
-   </div>
- </div>
+    </div>
+
+    <div class="row justify-center text-center">
+      <h3 class = "text-purple-wt text-weight-bold">Enjoy YouTube, Vimeo videos and more with your family</h3>
+    </div>
+
+    <div class="row q-px-md-xl justify-center text-purple-header ">
+      <h5 class="text-weight-bold">Popular Videos</h5>
+    </div>
+
+    <div class="row q-px-md-xl">
+      <div
+        v-for="(video) in popularVideos"
+        :key="video.id"
+        class="q-pa-sm q-mb-md col-xs-12 col-sm-6 col-md-3">
+        <VideoThumbnail :video="video" />
+      </div>
+    </div>
+
+  </q-page>
 </template>
 
 <script>
+import VideoThumbnail from 'components/VideoThumbnail.vue';
+
 export default {
   name: 'PageIndex',
+  components: {
+    VideoThumbnail,
+  },
   data() {
     return {
       popularVideos: [
-        'https://www.youtube.com/embed/k3_tw44QsZQ?rel=0',
-        'https://www.youtube.com/embed/k3_tw44QsZQ?rel=0',
-        'https://www.youtube.com/embed/k3_tw44QsZQ?rel=0',
-        'https://www.youtube.com/embed/k3_tw44QsZQ?rel=0',
-      ],
+        'https://i.ytimg.com/vi/6ZfuNTqbHE8/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBYC5R6XVFCqh73cDAbbTszFAvfrw',
+        'https://i.ytimg.com/vi/eOrNdBpGMv8/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBFiFm2p4acvv5OVLI02zOUGAD4eQ',
+        'https://i.ytimg.com/vi/6ZfuNTqbHE8/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBYC5R6XVFCqh73cDAbbTszFAvfrw',
+        'https://i.ytimg.com/vi/eOrNdBpGMv8/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBFiFm2p4acvv5OVLI02zOUGAD4eQ',
+        'https://i.ytimg.com/vi/6ZfuNTqbHE8/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBYC5R6XVFCqh73cDAbbTszFAvfrw',
+        'https://i.ytimg.com/vi/eOrNdBpGMv8/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBFiFm2p4acvv5OVLI02zOUGAD4eQ',
+        'https://i.ytimg.com/vi/6ZfuNTqbHE8/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBYC5R6XVFCqh73cDAbbTszFAvfrw',
+        'https://i.ytimg.com/vi/eOrNdBpGMv8/hqdefault.jpg?sqp=-oaymwEZCNACELwBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLBFiFm2p4acvv5OVLI02zOUGAD4eQ',
+      ].map((thumb_url) => ({ id: Math.random(), thumb_url, title: 'Avengers | Movie Trailer' })), // assign temporary id
     };
   },
 };
