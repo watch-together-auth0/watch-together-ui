@@ -85,7 +85,7 @@ export default {
     this.$root.$on('toggleSideBar', () => {
       this.leftActive = !this.leftActive;
       this.$root.$emit('leftActiveChanged', this.leftActive);
-    })
+    });
   },
   computed: {
     leftMini() {
