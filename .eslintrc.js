@@ -65,6 +65,8 @@ module.exports = {
 
     // allow debugger during development only
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'max-len': process.env.NODE_ENV === 'production' ? 'off' : 'off'
+    'max-len': process.env.NODE_ENV === 'production' ? 'off' : 'off',
+    'no-console': process.env.NODE_ENV === 'production' ? 'off' : 'off',
+    'camelcase': process.env.NODE_ENV === 'production' ? 'off' : 'off',
   }
 }
