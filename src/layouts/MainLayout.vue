@@ -28,12 +28,22 @@
         /> -->
         <q-space />
         <q-btn
+          v-if="!$auth.isAuthenticated"
           unelevated
           color="purple"
           class="q-px-md text-weight-bold"
           no-caps
-          label="Sign In"
+          label="Log in"
           @click="login"
+        />
+        <q-btn
+          v-else
+          unelevated
+          color="purple"
+          class="q-px-md text-weight-bold"
+          no-caps
+          label="Log out"
+          @click="logout"
         />
       </q-toolbar>
     </q-header>
@@ -105,6 +115,11 @@ export default {
   methods: {
     login() {
       this.$auth.loginWithRedirect();
+    },
+    logout() {
+      this.$auth.logout({
+        returnTo: window.location.origin,
+      });
     },
   },
   data() {
