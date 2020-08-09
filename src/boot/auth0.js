@@ -1,3 +1,4 @@
+// https://auth0.com/docs/quickstart/spa/vuejs/01-login#configure-callback-urls
 import { Auth0Plugin } from 'src/auth';
 
 const domain = process.env.AUTH0_DOMAIN;
