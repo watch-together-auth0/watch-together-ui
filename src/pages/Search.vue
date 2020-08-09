@@ -48,12 +48,9 @@ export default {
     };
   },
   methods: {
-    search() {
-      // TODO: search
-      // this.$axios.get('...', { q: this.$route.query.q}).then((response) => {
-      //   this.videos = response.data // assuming data is array of video objects
-      // })
-      console.log(`searching for ${this.$route.query.q}`);
+    async search() {
+      const videos = this.$yt.search(this.$route.query.q);
+      console.log('search -> videos', videos);
     },
   },
   watch: {

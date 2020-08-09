@@ -115,6 +115,7 @@ export const useAuth0 = ({
         this.loading = false;
 
         if (this.user) {
+          this.$axios.post('/users', { name: this.user.name, email: this.user.email });
           LocalStorage.set('wt_user', this.user);
         } else {
           this.user = LocalStorage.getItem('wt_user');
