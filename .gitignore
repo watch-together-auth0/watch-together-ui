@@ -32,4 +32,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 
-auth_config.json
+/auth_config.json
