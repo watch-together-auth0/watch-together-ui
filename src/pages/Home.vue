@@ -10,8 +10,8 @@
 
     <div class="row q-px-md-xl">
       <div
-        v-for="(video) in recommendedVideos"
-        :key="video.id"
+        v-for="(video, index) in recommendedVideos"
+        :key="index"
         class="q-pa-sm q-mb-md col-xs-12 col-sm-6 col-md-3">
         <VideoThumbnail :video="video" />
       </div>
@@ -23,8 +23,8 @@
 
     <div class="row q-px-md-xl">
       <div
-        v-for="(video) in popularVideos"
-        :key="video.id"
+        v-for="(video, index) in popularVideos"
+        :key="index"
         class="q-pa-sm q-mb-md col-xs-12 col-sm-6 col-md-3">
         <VideoThumbnail :video="video" />
       </div>
@@ -36,7 +36,6 @@
 <script>
 import SearchVideo from 'components/SearchVideo.vue';
 import VideoThumbnail from 'components/VideoThumbnail.vue';
-import formatVideo from 'src/services/Video/formatVideo';
 
 export default {
   components: {
@@ -53,12 +52,12 @@ export default {
     async getRecommendedVideos() {
       const { data } = await this.$yt.search('News today');
       const { items: videos } = data;
-      this.recommendedVideos = videos.map((v) => formatVideo(v));
+      this.recommendedVideos = videos;
     },
     async getPopularVideos() {
       const { data } = await this.$yt.search('Popular Videos Today');
       const { items: videos } = data;
-      this.popularVideos = videos.map((v) => formatVideo(v));
+      this.popularVideos = videos;
     },
   },
   mounted() {

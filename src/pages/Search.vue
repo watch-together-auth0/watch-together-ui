@@ -10,8 +10,8 @@
 
     <div class="row q-px-md-xl">
       <div
-        v-for="(video) in videos"
-        :key="video.id"
+        v-for="(video, index) in videos"
+        :key="index"
         class="q-pa-sm q-mb-md col-xs-12 col-sm-6 col-md-3"
         >
         <VideoThumbnail :video="video" />
@@ -24,7 +24,6 @@
 <script>
 import SearchVideo from 'components/SearchVideo.vue';
 import VideoThumbnail from 'components/VideoThumbnail.vue';
-import formatVideo from 'src/services/Video/formatVideo';
 
 export default {
   components: {
@@ -43,7 +42,7 @@ export default {
     async search() {
       const { data } = await this.$yt.search(this.$route.query.q);
       const { items: videos } = data;
-      this.videos = videos.map((v) => formatVideo(v));
+      this.videos = videos;
     },
   },
   watch: {

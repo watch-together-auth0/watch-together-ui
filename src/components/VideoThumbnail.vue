@@ -1,21 +1,15 @@
 <template>
   <div :class="{ 'cursor-pointer': $auth.isAuthenticated }" @click="watch()">
-    <q-img class="q-pa-sm" :src="video.thumb_url" />
+    <q-img class="q-pa-sm" :src="videoDisplay.thumb_url" />
     <div class="q-mt-sm">
-      <span v-html="video.title"></span>
+      <span v-html="videoDisplay.title"></span>
     </div>
   </div>
 </template>
 
 <script>
-/**
- * This expects a video prop
- * {
- *   id: '',
- *   title: '',
- *   thumb_url: '',
- * }
- */
+import formatVideo from 'src/services/Video/formatVideo';
+
 export default {
   props: {
     video: {
@@ -23,9 +17,15 @@ export default {
       required: true,
     },
   },
+  computed: {
+    videoDisplay() {
+      return formatVideo(this.video);
+    },
+  },
   methods: {
     watch() {
       if (this.$auth.isAuthenticated) {
+        this.$q.localStorage.set('wt_watch');
         this.$router.push({ name: 'watch', params: { id: this.video.id } });
       }
     },
