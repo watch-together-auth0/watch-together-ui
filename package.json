@@ -15,6 +15,7 @@
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
     "core-js": "^3.6.5",
+    "fuzzy-search": "^3.2.1",
     "quasar": "^1.0.0",
     "vue-i18n": "^8.0.0"
   },
