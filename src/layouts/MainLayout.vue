@@ -7,7 +7,7 @@
           src="logo.png"
           style="width: 50px;"
           class="cursor-pointer"
-          @click="$router.push({ name: 'index' })"
+          @click="login"
         />
         <!-- <q-btn
           flat
@@ -31,7 +31,7 @@
           class="q-px-md text-weight-bold"
           no-caps
           label="Sign In"
-          to="/home"
+          @click="login"
         />
       </q-toolbar>
     </q-header>
@@ -98,6 +98,11 @@ export default {
       set(open) {
         this.leftActive = open;
       },
+    },
+  },
+  methods: {
+    login() {
+      this.$auth.loginWithRedirect();
     },
   },
   data() {
