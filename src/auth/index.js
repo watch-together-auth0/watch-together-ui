@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import createAuth0Client from '@auth0/auth0-spa-js';
+import { LocalStorage } from 'quasar';
 
 /** Define a default action to perform after authentication */
 const DEFAULT_REDIRECT_CALLBACK = () => window.history.replaceState({}, document.title, window.location.pathname);
@@ -78,6 +79,7 @@ export const useAuth0 = ({
       },
       /** Logs the user out and removes their session on the authorization server */
       logout(o) {
+        LocalStorage.remove('wt_user');
         return this.auth0Client.logout(o);
       },
     },
@@ -90,7 +92,6 @@ export const useAuth0 = ({
         audience: options.audience,
         redirect_uri: redirectUri,
       });
-      console.log('auth/index.js -> created -> this.auth0Client', this.auth0Client);
 
       try {
         // If the user is returning to the app after authentication..
@@ -99,7 +100,6 @@ export const useAuth0 = ({
         ) {
           // handle the redirect and retrieve tokens
           const { appState } = await this.auth0Client.handleRedirectCallback();
-          console.log('auth/index.js -> created -> appState', appState);
 
           // Notify subscribers that the redirect callback has happened, passing the appState
           // (useful for retrieving any pre-authentication state)
@@ -113,6 +113,13 @@ export const useAuth0 = ({
         this.isAuthenticated = await this.auth0Client.isAuthenticated();
         this.user = await this.auth0Client.getUser();
         this.loading = false;
+
+        if (this.user) {
+          LocalStorage.set('wt_user', this.user);
+        } else {
+          this.user = LocalStorage.getItem('wt_user');
+          this.isAuthenticated = !!this.user;
+        }
       }
     },
   });

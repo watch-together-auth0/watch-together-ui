@@ -11,14 +11,13 @@ export default async ({ Vue, router }) => {
   Vue.use(Auth0Plugin, {
     domain,
     clientId,
-    onRedirectCallback: (appState) => {
-      console.log('appState', appState);
-      router.replace('/home');
+    onRedirectCallback: (/* appState */) => {
       // router.push(
       //   appState && appState.targetUrl
       //     ? appState.targetUrl
       //     : window.location.pathname,
       // );
+      router.replace('/home');
     },
   });
 };
