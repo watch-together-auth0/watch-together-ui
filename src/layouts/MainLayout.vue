@@ -116,7 +116,5 @@ export default {
       ],
     };
   },
-  methods: {
-  },
 };
 </script>
