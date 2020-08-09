@@ -12,7 +12,7 @@ export const getInstance = () => instance;
 /** Creates an instance of the Auth0 SDK. If one has already been created, it returns that instance */
 export const useAuth0 = ({
   onRedirectCallback = DEFAULT_REDIRECT_CALLBACK,
-  redirectUri = `${window.location.origin}/home`,
+  redirectUri = window.location.origin,
   ...options
 }) => {
   if (instance) return instance;
@@ -90,6 +90,7 @@ export const useAuth0 = ({
         audience: options.audience,
         redirect_uri: redirectUri,
       });
+      console.log('auth/index.js -> created -> this.auth0Client', this.auth0Client);
 
       try {
         // If the user is returning to the app after authentication..
@@ -98,12 +99,14 @@ export const useAuth0 = ({
         ) {
           // handle the redirect and retrieve tokens
           const { appState } = await this.auth0Client.handleRedirectCallback();
+          console.log('auth/index.js -> created -> appState', appState);
 
           // Notify subscribers that the redirect callback has happened, passing the appState
           // (useful for retrieving any pre-authentication state)
           onRedirectCallback(appState);
         }
       } catch (e) {
+        console.log('auth/index.js -> created -> e', e);
         this.error = e;
       } finally {
         // Initialize our internal authentication state
