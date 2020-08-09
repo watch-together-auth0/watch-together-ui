@@ -27,9 +27,11 @@
           label="Help"
         /> -->
         <q-space />
-        <q-avatar v-if="$auth.isAuthenticated" class="q-mr-xs-sm q-mr-sm-none">
-          <img :src="user.picture">
-        </q-avatar>
+        <router-link :to="{ name: 'home' }">
+          <q-avatar v-if="$auth.isAuthenticated" class="q-mr-xs-sm q-mr-sm-none">
+            <img :src="user.picture">
+          </q-avatar>
+        </router-link>
         <q-btn
           v-if="$auth.isAuthenticated"
           unelevated
@@ -37,9 +39,11 @@
           dense
           color="white"
           text-color="black"
-          class="q-px-md text-weight-bold no-pointer-events gt-xs"
+          class="q-px-md text-weight-bold gt-xs"
           no-caps
-          :label="'Hello '+user.name"
+          stretch
+          :label="user.name"
+          to="/home"
         />
         <q-btn
           v-if="!$auth.isAuthenticated"
