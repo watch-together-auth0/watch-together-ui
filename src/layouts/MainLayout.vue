@@ -27,6 +27,20 @@
           label="Help"
         /> -->
         <q-space />
+        <q-avatar v-if="$auth.isAuthenticated">
+          <img :src="user.picture">
+        </q-avatar>
+        <q-btn
+          v-if="$auth.isAuthenticated"
+          unelevated
+          flat
+          dense
+          color="white"
+          text-color="black"
+          class="q-px-md text-weight-bold no-pointer-events"
+          no-caps
+          :label="'Hello '+user.name"
+        />
         <q-btn
           v-if="!$auth.isAuthenticated"
           unelevated
@@ -110,6 +124,9 @@ export default {
       set(open) {
         this.leftActive = open;
       },
+    },
+    user() {
+      return this.$auth.user || {};
     },
   },
   methods: {
