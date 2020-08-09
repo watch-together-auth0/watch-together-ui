@@ -80,6 +80,7 @@
       <!-- drawer content -->
       <Sidebar
         class="q-mt-md"
+        v-model="leftActive"
       />
     </q-drawer>
 
