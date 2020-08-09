@@ -1,3 +1,4 @@
+// https://auth0.com/docs/quickstart/spa/vuejs/01-login#configure-callback-urls
 import { Auth0Plugin } from 'src/auth';
 
 const domain = process.env.AUTH0_DOMAIN;
@@ -10,14 +11,13 @@ export default async ({ Vue, router }) => {
   Vue.use(Auth0Plugin, {
     domain,
     clientId,
-    onRedirectCallback: (appState) => {
-      console.log('appState', appState);
-      router.push('/home');
+    onRedirectCallback: (/* appState */) => {
       // router.push(
       //   appState && appState.targetUrl
       //     ? appState.targetUrl
       //     : window.location.pathname,
       // );
+      router.replace('/home');
     },
   });
 };

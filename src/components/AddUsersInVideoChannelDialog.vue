@@ -54,7 +54,7 @@
 <script>
 import FuzzySearch from 'fuzzy-search';
 
-const users = [
+let users = [
   {
     email: 'arjon@gmail.com',
     key: '8dlwbnwzsw20',
@@ -119,6 +119,10 @@ export default {
       this.opened = false;
       this.userIds = [];
     },
+  },
+  async mounted() {
+    const { data } = await this.$axios.get('/users');
+    users = data.result;
   },
 };
 </script>

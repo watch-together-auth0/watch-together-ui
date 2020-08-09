@@ -26,6 +26,7 @@ module.exports = function (/* ctx */) {
       'axios',
       'notify',
       'auth0',
+      'youtube',
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -108,6 +109,7 @@ module.exports = function (/* ctx */) {
       plugins: [
         'Dialog',
         'Notify',
+        'LocalStorage',
       ],
     },
 
