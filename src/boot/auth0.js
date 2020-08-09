@@ -12,7 +12,7 @@ export default async ({ Vue, router }) => {
     clientId,
     onRedirectCallback: (appState) => {
       console.log('appState', appState);
-      router.push('/home');
+      router.replace('/home');
       // router.push(
       //   appState && appState.targetUrl
       //     ? appState.targetUrl
