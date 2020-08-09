@@ -65,11 +65,12 @@ module.exports = {
     // https://stackoverflow.com/questions/37826449/expected-linebreaks-to-be-lf-but-found-crlf-linebreak-style
 
 
-
     // allow debugger during development only
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'max-len': process.env.NODE_ENV === 'production' ? 'off' : 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'off' : 'off',
     'camelcase': process.env.NODE_ENV === 'production' ? 'off' : 'off',
+    'class-methods-use-this': process.env.NODE_ENV === 'production' ? 'off' : 'off',
+    'arrow-parens': process.env.NODE_ENV === 'production' ? 'off' : 'off',
   }
 }

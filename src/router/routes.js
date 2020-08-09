@@ -3,10 +3,26 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', name: 'index', component: () => import('pages/Index.vue') },
-      { path: '/home', name: 'home', component: () => import('pages/Home.vue') },
-      { path: '/search', name: 'search', component: () => import('pages/Search.vue') },
-      { path: '/watch/:id', name: 'watch', component: () => import('pages/Watch.vue') },
+      {
+        path: '',
+        name: 'index',
+        component: () => import('pages/Index.vue'),
+      },
+      {
+        path: '/home',
+        name: 'home',
+        component: () => import('pages/Home.vue'),
+      },
+      {
+        path: '/search',
+        name: 'search',
+        component: () => import('pages/Search.vue'),
+      },
+      {
+        path: '/watch/:id',
+        name: 'watch',
+        component: () => import('pages/Watch.vue'),
+      },
     ],
   },
 

@@ -3,12 +3,14 @@
 
     <q-header elevated class="bg-primary text-white">
       <q-toolbar class="bg-white text-purple-wt">
-        <img
-          src="logo.png"
-          style="width: 50px;"
-          class="cursor-pointer"
-          @click="login"
-        />
+        <router-link :to="{ name: 'index' }">
+          <img
+            src="logo.png"
+            style="width: 50px;"
+            class="cursor-pointer"
+          />
+        </router-link>
+
         <!-- <q-btn
           flat
           stretch
@@ -25,13 +27,38 @@
           label="Help"
         /> -->
         <q-space />
+        <q-avatar v-if="$auth.isAuthenticated" class="q-mr-xs-sm q-mr-sm-none">
+          <img :src="user.picture">
+        </q-avatar>
         <q-btn
+          v-if="$auth.isAuthenticated"
+          unelevated
+          flat
+          dense
+          color="white"
+          text-color="black"
+          class="q-px-md text-weight-bold no-pointer-events gt-xs"
+          no-caps
+          :label="'Hello '+user.name"
+        />
+        <q-btn
+          v-if="!$auth.isAuthenticated"
           unelevated
           color="purple"
           class="q-px-md text-weight-bold"
           no-caps
-          label="Sign In"
+          label="Log in"
           @click="login"
+        />
+        <q-btn
+          v-else
+          unelevated
+          color="purple"
+          class="text-weight-bold"
+          no-caps
+          label="Log out"
+          style="min-width: 100px;"
+          @click="logout"
         />
       </q-toolbar>
     </q-header>
@@ -99,10 +126,18 @@ export default {
         this.leftActive = open;
       },
     },
+    user() {
+      return this.$auth.user || {};
+    },
   },
   methods: {
     login() {
       this.$auth.loginWithRedirect();
+    },
+    logout() {
+      this.$auth.logout({
+        returnTo: window.location.origin,
+      });
     },
   },
   data() {
