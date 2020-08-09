@@ -27,7 +27,7 @@
           label="Help"
         /> -->
         <q-space />
-        <q-avatar v-if="$auth.isAuthenticated">
+        <q-avatar v-if="$auth.isAuthenticated" class="q-mr-xs-sm q-mr-sm-none">
           <img :src="user.picture">
         </q-avatar>
         <q-btn
@@ -37,7 +37,7 @@
           dense
           color="white"
           text-color="black"
-          class="q-px-md text-weight-bold no-pointer-events"
+          class="q-px-md text-weight-bold no-pointer-events gt-xs"
           no-caps
           :label="'Hello '+user.name"
         />
@@ -54,9 +54,10 @@
           v-else
           unelevated
           color="purple"
-          class="q-px-md text-weight-bold"
+          class="text-weight-bold"
           no-caps
           label="Log out"
+          style="min-width: 100px;"
           @click="logout"
         />
       </q-toolbar>
