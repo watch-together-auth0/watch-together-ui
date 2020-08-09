@@ -59,6 +59,12 @@ export default {
   components: {
     AddUsersInVideoChannelDialog,
   },
+  props: {
+    value: {
+      type: Boolean,
+      default: true,
+    },
+  },
   mounted() {
     this.$root.$on('leftActiveChanged', (bool) => {
       this.leftActive = bool;
@@ -76,7 +82,7 @@ export default {
   },
   data() {
     return {
-      leftActive: this.$q.platform.is.desktop,
+      leftActive: this.value,
       addUsersInVideoChannelDialog: false,
       onlineUsers: [
         {
