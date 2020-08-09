@@ -2,7 +2,7 @@
   <div :class="{ 'cursor-pointer': $auth.isAuthenticated }" @click="watch()">
     <q-img class="q-pa-sm" :src="video.thumb_url" />
     <div class="q-mt-sm">
-      {{ video.title }}
+      <span v-html="video.title"></span>
     </div>
   </div>
 </template>
