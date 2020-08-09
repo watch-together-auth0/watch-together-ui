@@ -33,3 +33,4 @@ yarn-error.log*
 *.sln
 
 /auth_config.json
+.env
