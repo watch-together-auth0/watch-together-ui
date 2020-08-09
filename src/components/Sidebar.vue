@@ -27,28 +27,38 @@
   <q-separator />
   <q-list>
     <q-item>
-      <q-item-section>Video Channels</q-item-section>
       <q-item-section avatar>
-        <q-btn dense flat icon="add_box" />
+        <q-icon name="video_library" />
       </q-item-section>
+      <q-item-section>Video Channels</q-item-section>
     </q-item>
     <q-separator />
     <template v-if="leftOpen">
     <q-item v-for="channel in videoChannels" :key="channel.id" clickable v-ripple>
       <q-item-section avatar>
-        <q-btn dense flat icon="play_arrow" />
+        <q-icon name="play_arrow" />
       </q-item-section>
       <q-item-section>
         <q-item-label>{{ channel.name }}</q-item-label>
       </q-item-section>
+      <q-item-section avatar>
+        <q-btn dense flat icon="add_box" @click.stop="addUser()" />
+      </q-item-section>
     </q-item>
     </template>
   </q-list>
+
+  <AddUsersInVideoChannelDialog v-model="addUsersInVideoChannelDialog" />
 </div>
 </template>
 
 <script>
+import AddUsersInVideoChannelDialog from 'components/AddUsersInVideoChannelDialog.vue';
+
 export default {
+  components: {
+    AddUsersInVideoChannelDialog,
+  },
   mounted() {
     this.$root.$on('leftActiveChanged', (bool) => {
       this.leftActive = bool;
@@ -67,6 +77,7 @@ export default {
   data() {
     return {
       leftActive: this.$q.platform.is.desktop,
+      addUsersInVideoChannelDialog: false,
       onlineUsers: [
         {
           id: 1,
@@ -95,6 +106,11 @@ export default {
         },
       ],
     };
+  },
+  methods: {
+    addUser() {
+      this.addUsersInVideoChannelDialog = true;
+    },
   },
 };
 </script>
