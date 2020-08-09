@@ -1,7 +1,9 @@
 import Vue from 'vue';
 import router from 'src/router';
 import { Auth0Plugin } from 'src/auth';
-import { domain, clientId } from '../../auth_config.json';
+
+const domain = process.env.AUTH0_DOMAIN;
+const clientId = process.env.AUTH0_CLIENT_ID;
 
 console.log('Domain', domain, clientId);
 
