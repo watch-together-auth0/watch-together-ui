@@ -12,7 +12,7 @@
       <div
         v-for="(video) in recommendedVideos"
         :key="video.id"
-        class="q-pa-sm q-mb-md col-sm-6 col-md-3">
+        class="q-pa-sm q-mb-md col-xs-12 col-sm-6 col-md-3">
         <VideoThumbnail :video="video" />
       </div>
     </div>
@@ -25,7 +25,7 @@
       <div
         v-for="(video) in popularVideos"
         :key="video.id"
-        class="q-pa-sm q-mb-md col-sm-6 col-md-3">
+        class="q-pa-sm q-mb-md col-xs-12 col-sm-6 col-md-3">
         <VideoThumbnail :video="video" />
       </div>
     </div>
