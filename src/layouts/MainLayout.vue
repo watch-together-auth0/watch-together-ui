@@ -3,12 +3,14 @@
 
     <q-header elevated class="bg-primary text-white">
       <q-toolbar class="bg-white text-purple-wt">
-        <img
-          src="logo.png"
-          style="width: 50px;"
-          class="cursor-pointer"
-          @click="login"
-        />
+        <router-link :to="{ name: 'index' }">
+          <img
+            src="logo.png"
+            style="width: 50px;"
+            class="cursor-pointer"
+          />
+        </router-link>
+
         <!-- <q-btn
           flat
           stretch
