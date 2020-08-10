@@ -44,8 +44,7 @@
 <script>
 import io from 'socket.io-client';
 // import VideoThumbnail from 'components/VideoThumbnail.vue';
-// const endPoint = 'https://shrouded-ravine-42691.herokuapp.com/';
-const endPoint = 'http://localhost:5000';
+const endPoint = 'https://shrouded-ravine-42691.herokuapp.com/';
 
 const socket = io.connect(`${endPoint}`);
 
