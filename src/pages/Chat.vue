@@ -14,7 +14,7 @@
                 :name="msg.name"
                 :text="msg.text"
                 :sent="msg.sent"
-                stamp="7 minutes ago"
+                :stamp="msg.time"
             />
       </div>
     </div>
@@ -44,7 +44,9 @@
 <script>
 import io from 'socket.io-client';
 // import VideoThumbnail from 'components/VideoThumbnail.vue';
-const endPoint = 'https://shrouded-ravine-42691.herokuapp.com';
+// const endPoint = 'https://shrouded-ravine-42691.herokuapp.com/';
+const endPoint = 'http://localhost:5000';
+
 const socket = io.connect(`${endPoint}`);
 
 export default {
@@ -57,7 +59,7 @@ export default {
     socket.on('connect', () => socket.emit('join', { room: 'room237', username: this.$auth.user !== null ? this.$auth.user.name : 'Guest User' }));
     socket.on('message', msg => {
       this.chats.push({
-        id: Math.random(), text: [msg.text], type: msg.type, sent: false,
+        id: Math.random(), text: [msg.text], name: msg.user, type: msg.type, sent: false, time: new Date().toLocaleTimeString('en-US'),
       });
     });
   },
@@ -80,12 +82,15 @@ export default {
       console.log(`searching for ${this.$route.query.q}`);
     },
     sendMessage() {
-      socket.emit('message', { room: 'room237', username: this.$auth.user, message: this.text });
+      socket.emit('message', {
+        room: 'room237', username: this.$auth.user !== null ? this.$auth.user.name : 'Guest User', message: this.text,
+      });
       this.chats.push({
         id: Math.random(),
         name: 'me',
         text: [this.text],
         sent: true,
+        time: new Date().toLocaleTimeString('en-US'),
       });
     },
   },
