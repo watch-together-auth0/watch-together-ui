@@ -44,7 +44,7 @@
 <script>
 import io from 'socket.io-client';
 // import VideoThumbnail from 'components/VideoThumbnail.vue';
-const endPoint = 'https://czpym5.deta.dev';
+const endPoint = 'https://shrouded-ravine-42691.herokuapp.com';
 const socket = io.connect(`${endPoint}`);
 
 export default {
