@@ -1,10 +1,8 @@
 // https://auth0.com/docs/quickstart/spa/vuejs/01-login#configure-callback-urls
 import { Auth0Plugin } from 'src/auth';
 
-// const domain = process.env.AUTH0_DOMAIN;
-// const clientId = process.env.AUTH0_CLIENT_ID;
-const domain = 'team-connect.us.auth0.com';
-const clientId = 'QtEx6AVEwysKGu7Qe243DQqorX6RfKyc';
+const domain = process.env.AUTH0_DOMAIN || 'team-connect.us.auth0.com';
+const clientId = process.env.AUTH0_CLIENT_ID || 'QtEx6AVEwysKGu7Qe243DQqorX6RfKyc';
 
 console.log('Domain', domain, clientId);
 
