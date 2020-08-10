@@ -62,10 +62,10 @@ class Yt {
         },
       },
     ];
-    for (let index = 0; index < 7; index += 1) {
-      items.push(items[0]);
-      items.push(items[1]);
-    }
+    // for (let index = 0; index < 7; index += 1) {
+    //   items.push(items[0]);
+    //   items.push(items[1]);
+    // }
     return Promise.resolve({
       data: {
         items,
