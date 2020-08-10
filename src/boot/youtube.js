@@ -16,7 +16,7 @@ class Yt {
   fallbackVideos() {
     const items = [
       {
-        id: '6ZfuNTqbHE8',
+        id: { videoId: '6ZfuNTqbHE8' },
         kind: 'youtube#video',
         etag: '"UCBpFjp2h75_b92t44sqraUcyu0/iYynQR8AtacsFUwWmrVaw4Smb_Q"',
         snippet: {
@@ -39,7 +39,7 @@ class Yt {
         },
       },
       {
-        id: 'eOrNdBpGMv8',
+        id: { videoId: 'eOrNdBpGMv8' },
         kind: 'youtube#video',
         etag: '"UCBpFjp2h75_b92t44sqraUcyu0/iYynQR8AtacsFUwWmrVaw4Smb_Q"',
         snippet: {
