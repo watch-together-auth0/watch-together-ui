@@ -8,7 +8,7 @@ class Yt {
       params: {
         part: 'snippet',
         maxResults: 16,
-        key: process.env.YOUTUBE_API_KEY,
+        key: process.env.YOUTUBE_API_KEY || 'AIzaSyBa8l4Qx44T65rNObPQaaU_T0pYW8OPiMg',
       },
     });
   }
