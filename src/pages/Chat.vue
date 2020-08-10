@@ -21,22 +21,23 @@
   </div>
     </div>
     <div class="row">
+      <form @submit.prevent="sendMessage">
+        <q-input bottom-slots v-model="text" label="Chat" :dense="dense">
+          <template v-slot:before>
+            <!-- <q-avatar>
+              <img src="https://cdn.quasar.dev/img/avatar5.jpg">
+            </q-avatar> -->
+          </template>
 
-      <q-input bottom-slots v-model="text" label="Chat" :dense="dense">
-        <template v-slot:before>
-          <!-- <q-avatar>
-            <img src="https://cdn.quasar.dev/img/avatar5.jpg">
-          </q-avatar> -->
-        </template>
+          <template v-slot:append>
+            <q-icon v-if="text !== ''" name="close"  class="cursor-pointer" @click="text = ''" />
+          </template>
 
-        <template v-slot:append>
-          <q-icon v-if="text !== ''" name="close"  class="cursor-pointer" />
-        </template>
-
-        <template v-slot:after>
-          <q-btn @click="sendMessage" round dense flat icon="send" />
-        </template>
-      </q-input>
+          <template v-slot:after>
+            <q-btn type="submit" round dense flat icon="send" />
+          </template>
+        </q-input>
+      </form>
     </div>
   </div>
 </template>
@@ -91,6 +92,7 @@ export default {
         sent: true,
         time: new Date().toLocaleTimeString('en-US'),
       });
+      this.text = '';
     },
   },
   watch: {
