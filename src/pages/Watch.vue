@@ -1,14 +1,20 @@
 <template>
-  <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-full.svg"
-    >
+  <q-page class="q-pa-xl">
+    <q-video
+      allowfullscreen
+      style="min-width: 80vw; min-height: 80vh;"
+      :ratio="10/3"
+      :src="videoSrc"
+    />
   </q-page>
 </template>
 
 <script>
 export default {
-  name: 'PageIndex',
+  data() {
+    return {
+      videoSrc: `https://www.youtube.com/embed/${this.$route.params.id}`,
+    };
+  },
 };
 </script>
