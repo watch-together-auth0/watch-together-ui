@@ -48,7 +48,7 @@
     </template>
   </q-list>
 
-  <AddUsersInVideoChannelDialog v-model="addUsersInVideoChannelDialog" />
+  <AddUsersInVideoChannelDialog v-model="addUsersInVideoChannelDialog" @added="addedUsers" />
 </div>
 </template>
 
@@ -87,15 +87,12 @@ export default {
       onlineUsers: [
         {
           id: 1,
-          name: 'Uncle Sam',
+          name: 'Uncle Tony',
           photo_url: '',
-        }, {
-          id: 2,
-          name: 'Uncle Drew',
-          photo_url: '',
-        }, {
-          id: 3,
-          name: 'Uncle Ben',
+        },
+        {
+          id: 1,
+          name: 'Aunt Mary',
           photo_url: '',
         },
       ],
@@ -116,6 +113,9 @@ export default {
   methods: {
     addUser() {
       this.addUsersInVideoChannelDialog = true;
+    },
+    addedUsers(users) {
+      this.onlineUsers = this.onlineUsers.concat(users);
     },
   },
 };

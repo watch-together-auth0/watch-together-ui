@@ -117,6 +117,8 @@ export default {
     submit() {
       this.$notify.success('Users has been successfully added to the channel!');
       this.opened = false;
+      const addUsers = users.filter(u => this.userIds.includes(u.key));
+      this.$emit('added', addUsers);
       this.userIds = [];
     },
   },
