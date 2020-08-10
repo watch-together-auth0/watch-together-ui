@@ -44,7 +44,7 @@
 <script>
 import io from 'socket.io-client';
 // import VideoThumbnail from 'components/VideoThumbnail.vue';
-const endPoint = 'http://localhost:5000';
+const endPoint = 'https://czpym5.deta.dev';
 const socket = io.connect(`${endPoint}`);
 
 export default {
@@ -80,7 +80,6 @@ export default {
       console.log(`searching for ${this.$route.query.q}`);
     },
     sendMessage() {
-      console.log('SendMessage');
       socket.emit('message', { room: 'room237', username: this.$auth.user, message: this.text });
       this.chats.push({
         id: Math.random(),
