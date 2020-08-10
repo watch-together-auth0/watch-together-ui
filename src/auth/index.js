@@ -85,6 +85,9 @@ export const useAuth0 = ({
     },
     /** Use this lifecycle method to instantiate the SDK client */
     async created() {
+      this.user = LocalStorage.getItem('wt_user');
+      this.isAuthenticated = !!this.user;
+
       // Create a new instance of the SDK client using members of the given options object
       this.auth0Client = await createAuth0Client({
         domain: options.domain,
@@ -115,7 +118,11 @@ export const useAuth0 = ({
         this.loading = false;
 
         if (this.user) {
-          this.$axios.post('/users', { name: this.user.name, email: this.user.email });
+          const { data } = await this.$axios.get('/users', { params: { email: this.user.email } });
+          const { result } = data;
+          if (result.length === 0) {
+            this.$axios.post('/users', { name: this.user.name, email: this.user.email });
+          }
           LocalStorage.set('wt_user', this.user);
         } else {
           this.user = LocalStorage.getItem('wt_user');

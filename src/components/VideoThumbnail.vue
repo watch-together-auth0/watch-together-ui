@@ -26,7 +26,7 @@ export default {
     watch() {
       if (this.$auth.isAuthenticated) {
         this.$q.localStorage.set('wt_watch');
-        this.$router.push({ name: 'watch', params: { id: this.video.id } });
+        this.$router.push({ name: 'watch', params: { id: this.videoDisplay.id } });
       }
     },
   },
