@@ -120,7 +120,7 @@ export const useAuth0 = ({
         if (this.user) {
           const { data } = await this.$axios.get('/users', { params: { email: this.user.email } });
           const { result } = data;
-          if (result.length || result.length === 0) {
+          if (result.length === 0) {
             this.$axios.post('/users', { name: this.user.name, email: this.user.email });
           }
           LocalStorage.set('wt_user', this.user);
